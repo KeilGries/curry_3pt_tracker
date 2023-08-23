@@ -1,5 +1,6 @@
 import "package:curry_3pt_tracker/widgets/streak_info.dart";
 import "package:flutter/material.dart";
+import "package:assorted_layout_widgets/assorted_layout_widgets.dart";
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -19,8 +20,14 @@ class _HomeState extends State<Home> {
             child: Column(
               children: [
                 const Spacer(),
+                const StreakInfo(
+                  streakQ:
+                      'How many games in a row has Steph Curry hit a 3pt shot?',
+                  answer: 'Current Streak: 70',
+                ),
+                const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(right: 55.0),
+                  padding: const EdgeInsets.only(right: 90.0),
                   child: SizedBox(
                     width: double.infinity,
                     child: Directionality(
@@ -40,11 +47,16 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                         style: ElevatedButton.styleFrom(
+                          side: BorderSide(
+                            color: Colors.white,
+                            width: 1.5,
+                          ),
                           backgroundColor:
                               Theme.of(context).colorScheme.secondary,
                           shadowColor: Colors.black,
                           elevation: 6,
-                          shape: const RoundedRectangleBorder(
+                          shape: const NonUniformRoundedRectangleBorder(
+                            hideLeftSide: true,
                             borderRadius: BorderRadius.horizontal(
                                 right: Radius.circular(20)),
                           ),
@@ -55,7 +67,7 @@ class _HomeState extends State<Home> {
                 ),
                 const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(left: 55.0),
+                  padding: const EdgeInsets.only(left: 90.0),
                   child: SizedBox(
                     width: double.infinity,
                     child: ElevatedButton.icon(
@@ -65,7 +77,7 @@ class _HomeState extends State<Home> {
                       ),
                       onPressed: () {},
                       label: const Text(
-                        'Fetch Previous Game Stats',
+                        'Get Previous Game Stats',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -73,25 +85,25 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       style: ElevatedButton.styleFrom(
+                        side: BorderSide(
+                          color: Colors.white,
+                          width: 1.5,
+                        ),
                         backgroundColor:
                             Theme.of(context).colorScheme.secondary,
                         shadowColor: Colors.black,
                         elevation: 6,
-                        shape: const RoundedRectangleBorder(
+                        shape: const NonUniformRoundedRectangleBorder(
+                          hideRightSide: true,
                           borderRadius: BorderRadius.horizontal(
-                              left: Radius.circular(20)),
+                            left: Radius.circular(20),
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-                const Spacer(),
-                const StreakInfo(
-                  streakQ:
-                      'How many games in a row has Steph Curry hit a 3pt shot?',
-                  answer: 'Current Streak: 70',
-                ),
-                const SizedBox(height: 25),
+                Spacer(),
                 const Padding(
                   padding: EdgeInsets.only(
                     left: 10,
