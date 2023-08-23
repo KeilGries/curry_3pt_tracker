@@ -3,14 +3,12 @@ import "package:flutter/material.dart";
 class StreakInfo extends StatelessWidget {
   final String streakQ;
   final String answer;
-  final String? startDate;
-  final String? endDate;
+  final String date;
   const StreakInfo({
     super.key,
     required this.streakQ,
     required this.answer,
-    this.startDate,
-    this.endDate,
+    required this.date,
   });
 
   @override
@@ -53,7 +51,7 @@ class StreakInfo extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              'Start Date: 6/17/21',
+              date,
               style: TextStyle(
                 color: Theme.of(context).colorScheme.secondary,
                 fontSize: 26,

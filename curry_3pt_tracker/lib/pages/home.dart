@@ -1,4 +1,4 @@
-import "package:curry_3pt_tracker/widgets/streak_info.dart";
+import "package:curry_3pt_tracker/widgets/info_slider.dart";
 import "package:flutter/material.dart";
 import "package:assorted_layout_widgets/assorted_layout_widgets.dart";
 
@@ -20,11 +20,7 @@ class _HomeState extends State<Home> {
             child: Column(
               children: [
                 const Spacer(),
-                const StreakInfo(
-                  streakQ:
-                      'How many games in a row has Steph Curry hit a 3pt shot?',
-                  answer: 'Current Streak: 70',
-                ),
+                const InfoSlider(),
                 const Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(right: 90.0),
@@ -47,7 +43,7 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                         style: ElevatedButton.styleFrom(
-                          side: BorderSide(
+                          side: const BorderSide(
                             color: Colors.white,
                             width: 1.5,
                           ),
@@ -85,7 +81,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       style: ElevatedButton.styleFrom(
-                        side: BorderSide(
+                        side: const BorderSide(
                           color: Colors.white,
                           width: 1.5,
                         ),
@@ -103,7 +99,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 const Padding(
                   padding: EdgeInsets.only(
                     left: 10,
