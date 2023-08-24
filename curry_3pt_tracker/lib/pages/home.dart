@@ -1,6 +1,8 @@
 import "package:curry_3pt_tracker/widgets/info_slider.dart";
+import "package:curry_3pt_tracker/widgets/long_elevated_button_right.dart";
 import "package:flutter/material.dart";
-import "package:assorted_layout_widgets/assorted_layout_widgets.dart";
+
+import '../widgets/long_elevated_button_left.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -16,91 +18,29 @@ class _HomeState extends State<Home> {
       body: Center(
         child: Container(
           color: Theme.of(context).colorScheme.primary,
-          child: SafeArea(
+          child: const SafeArea(
             child: Column(
               children: [
-                const Spacer(),
-                const InfoSlider(),
-                const Spacer(),
+                Spacer(),
+                InfoSlider(),
+                Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(right: 90.0),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Directionality(
-                      textDirection: TextDirection.rtl,
-                      child: ElevatedButton.icon(
-                        icon: const Icon(
-                          Icons.sports_basketball,
-                          size: 28,
+                  padding: EdgeInsets.only(right: 90.0),
+                  child: LongElevatedButtonLeft(
+                        label: 'Show Upcoming Game',
+                        icon: Icons.sports_basketball,
                         ),
-                        onPressed: () {},
-                        label: const Text(
-                          'Show Upcoming Game',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          side: const BorderSide(
-                            color: Colors.white,
-                            width: 1.5,
-                          ),
-                          backgroundColor:
-                              Theme.of(context).colorScheme.secondary,
-                          shadowColor: Colors.black,
-                          elevation: 6,
-                          shape: const NonUniformRoundedRectangleBorder(
-                            hideLeftSide: true,
-                            borderRadius: BorderRadius.horizontal(
-                                right: Radius.circular(20)),
-                          ),
-                        ),
-                      ),
                     ),
-                  ),
-                ),
-                const Spacer(),
+                Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(left: 90.0),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton.icon(
-                      icon: const Icon(
-                        Icons.query_stats,
-                        size: 28,
-                      ),
-                      onPressed: () {},
-                      label: const Text(
-                        'Get Previous Game Stats',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        side: const BorderSide(
-                          color: Colors.white,
-                          width: 1.5,
-                        ),
-                        backgroundColor:
-                            Theme.of(context).colorScheme.secondary,
-                        shadowColor: Colors.black,
-                        elevation: 6,
-                        shape: const NonUniformRoundedRectangleBorder(
-                          hideRightSide: true,
-                          borderRadius: BorderRadius.horizontal(
-                            left: Radius.circular(20),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  padding: EdgeInsets.only(left: 90.0),
+                  child: LongElevatedButtonRight(
+                    label: 'Get Previous Game Stats',
+                    icon: Icons.query_stats,
+                  )
                 ),
-                const Spacer(),
-                const Padding(
+                Spacer(),
+                Padding(
                   padding: EdgeInsets.only(
                     left: 10,
                     right: 10,

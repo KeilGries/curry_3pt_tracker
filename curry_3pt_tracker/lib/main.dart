@@ -1,5 +1,4 @@
 import 'package:curry_3pt_tracker/pages/home.dart';
-import 'package:curry_3pt_tracker/pages/last_game_stats.dart';
 import 'package:flutter/material.dart';
 
 void main() {

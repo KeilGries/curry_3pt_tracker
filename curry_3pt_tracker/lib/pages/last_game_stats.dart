@@ -16,7 +16,7 @@ class StatsPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Lottie.asset('assets/images/ball.json',
+              Lottie.asset('assets/images/animations/ball.json',
                   alignment: Alignment.center,
                   height: 200,
                   width: 200,
