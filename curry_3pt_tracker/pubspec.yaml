@@ -68,9 +68,37 @@ flutter:
   assets:
     - assets/images/curry_outline.png
     - assets/images/animations/ball.json
-    - assets/images/nba_assets/Teams/western_conference/golden-state-warriors-logo-2020.png
-    - assets/images/nba_assets/Teams/western_conference/los-angeles-lakers-logo.png
-    - assets/images/nba_assets/Teams/western_conference/denver-nuggets-logo-2018.png
+    - assets/images/nba_assets/Teams/eastern_conference/atlanta-hawks-logo.png
+    - assets/images/nba_assets/Teams/eastern_conference/boston-celtics-logo.png
+    - assets/images/nba_assets/Teams/eastern_conference/brooklyn-nets-logo.png
+    - assets/images/nba_assets/Teams/eastern_conference/charlotte-hornets-logo.png
+    - assets/images/nba_assets/Teams/eastern_conference/chicago-bulls-logo.png
+    - assets/images/nba_assets/Teams/eastern_conference/cleveland-cavaliers-logo.png
+    - assets/images/nba_assets/Teams/western_conference/dallas-mavericks-logo.png
+    - assets/images/nba_assets/Teams/western_conference/denver-nuggets-logo.png
+    - assets/images/nba_assets/Teams/eastern_conference/detroit-pistons-logo.png
+    - assets/images/nba_assets/Teams/western_conference/golden-state-warriors-logo.png
+    - assets/images/nba_assets/Teams/western_conference/houston-rockets-logo.png
+    - assets/images/nba_assets/Teams/eastern_conference/indiana-pacers-logo.png
+    - assets/images/nba_assets/Teams/western_conference/la-clippers-logo.png
+    - assets/images/nba_assets/Teams/western_conference/la-lakers-logo.png
+    - assets/images/nba_assets/Teams/western_conference/memphis-grizzlies-logo.png
+    - assets/images/nba_assets/Teams/eastern_conference/miami-heat-logo.png
+    - assets/images/nba_assets/Teams/eastern_conference/milwaukee-bucks-logo.png
+    - assets/images/nba_assets/Teams/western_conference/minnesota-timberwolves-logo.png
+    - assets/images/nba_assets/Teams/western_conference/new-orleans-pelicans-logo.png
+    - assets/images/nba_assets/Teams/eastern_conference/new-york-knicks-logo.png
+    - assets/images/nba_assets/Teams/western_conference/oklahoma-city-thunder-logo.png
+    - assets/images/nba_assets/Teams/eastern_conference/orlando-magic-logo.png
+    - assets/images/nba_assets/Teams/eastern_conference/philadelphia-76ers-logo.png
+    - assets/images/nba_assets/Teams/western_conference/phoenix-suns-logo.png
+    - assets/images/nba_assets/Teams/western_conference/portland-trail-blazers-logo.png
+    - assets/images/nba_assets/Teams/western_conference/sacramento-kings-logo.png
+    - assets/images/nba_assets/Teams/western_conference/san-antonio-spurs-logo.png
+    - assets/images/nba_assets/Teams/eastern_conference/toronto-raptors-logo.png
+    - assets/images/nba_assets/Teams/western_conference/utah-jazz-logo.png
+    - assets/images/nba_assets/Teams/eastern_conference/washington-wizards-logo.png
+    - assets/images/nba_assets/misc/unknown_team.png
     - assets/images/curry_shrug.png
     - assets/images/curry-text-logo.png
     - assets/images/curry-logo.png

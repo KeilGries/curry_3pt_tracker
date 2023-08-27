@@ -1,3 +1,4 @@
+import "package:curry_3pt_tracker/global_variables.dart";
 import "package:curry_3pt_tracker/icon_files/app_icons.dart";
 import "package:curry_3pt_tracker/pages/home.dart";
 import "package:curry_3pt_tracker/widgets/large_stat_card.dart";
@@ -24,10 +25,6 @@ Future<Stats> fetchStats() async {
     throw Exception('Failed to load stats');
   }
 }
-
-// loadStats() {
-//   fetchStats();
-// }
 
 class Stats {
   final int? pts;
@@ -148,6 +145,8 @@ class _StatsPageState extends State<StatsPage> {
 
           String formattedDate = DateFormat.yMd().format(dt2);
 
+          final teamLogos = parseTeams(stats.visitingID, stats.homeID);
+
           return Scaffold(
             body: Center(
               child: Container(
@@ -173,28 +172,31 @@ class _StatsPageState extends State<StatsPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Stack(
-                              children: [
-                                Image.asset(
-                                  'assets/images/nba_assets/Teams/western_conference/golden-state-warriors-logo-2020.png',
-                                  width: 120,
-                                ),
-                                Row(
-                                  children: [
-                                    const SizedBox(
-                                      height: 30,
-                                    ),
-                                    Icon(
-                                      Icons.airplanemode_active,
-                                      size: 16,
-                                      color: Colors.white.withOpacity(.5),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                            const Spacer(),
+                            Image.asset(
+                              teamLogos.$1,
+                              width: 120,
                             ),
                             Column(
                               children: [
+                                const Row(
+                                  children: [
+                                    Icon(
+                                      Icons.airplanemode_active,
+                                      size: 18,
+                                      color: Colors.black87,
+                                    ),
+                                    SizedBox(
+                                      width: 60,
+                                    ),
+                                    Icon(
+                                      Icons.home,
+                                      size: 18,
+                                      color: Colors.black87,
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 7),
                                 Text(
                                   '${stats.visitingScore.toString()} - ${stats.homeScore.toString()}',
                                   style: const TextStyle(
@@ -211,27 +213,11 @@ class _StatsPageState extends State<StatsPage> {
                                 ),
                               ],
                             ),
-                            Stack(
-                              children: [
-                                Image.asset(
-                                  'assets/images/nba_assets/Teams/western_conference/los-angeles-lakers-logo.png',
-                                  width: 120,
-                                ),
-                                Row(
-                                  children: [
-                                    const SizedBox(
-                                      width: 102,
-                                      height: 30,
-                                    ),
-                                    Icon(
-                                      Icons.home,
-                                      size: 18,
-                                      color: Colors.white.withOpacity(.5),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                            Image.asset(
+                              teamLogos.$2,
+                              width: 120,
                             ),
+                            const Spacer(),
                           ],
                         ),
                         Row(
@@ -371,23 +357,30 @@ class _StatsPageState extends State<StatsPage> {
         } else if (snapshot.hasError) {
           return Text('${snapshot.error}');
         }
-        return Center(
-          child: Container(
-            height: double.infinity,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Theme.of(context).colorScheme.primaryContainer,
-                  Theme.of(context).colorScheme.primary,
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomCenter,
+        return Scaffold(
+          body: Center(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Theme.of(context).colorScheme.primaryContainer,
+                    Theme.of(context).colorScheme.primary,
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomCenter,
+                ),
               ),
-            ),
-            child: Lottie.asset(
-              'assets/images/animations/ball.json',
-              fit: BoxFit.scaleDown,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Lottie.asset(
+                    'assets/images/animations/ball.json',
+                    height: 200,
+                    fit: BoxFit.fill,
+                  ),
+                ],
+              ),
             ),
           ),
         );
