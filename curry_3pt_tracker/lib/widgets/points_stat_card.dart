@@ -34,8 +34,9 @@ class PointsStatCard extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
+                                Colors.blueAccent,
                 Theme.of(context).colorScheme.secondary,
-                Colors.blueAccent,
+
               ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,

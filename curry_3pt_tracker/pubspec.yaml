@@ -38,6 +38,9 @@ dependencies:
   carousel_slider:
   assorted_layout_widgets:
   lottie: 
+  http: 
+  flutter_animate: 
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

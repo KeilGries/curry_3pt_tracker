@@ -34,8 +34,8 @@ class StatCard extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Theme.of(context).colorScheme.secondary,
                 Colors.blueAccent,
+                Theme.of(context).colorScheme.secondary,             
               ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
