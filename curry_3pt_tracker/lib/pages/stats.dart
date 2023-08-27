@@ -12,7 +12,14 @@ import "package:http/http.dart" as http;
 import 'dart:async';
 import 'dart:convert';
 
+Widget _loadingContent = Lottie.asset(
+  'assets/images/animations/ball.json',
+  height: 200,
+  fit: BoxFit.fill,
+);
+
 Future<Stats> fetchStats() async {
+  await Future.delayed(const Duration(milliseconds: 1225));
   final response = await http.get(Uri.parse(
       'https://balldontlie.io/api/v1/stats?seasons[]=2022&player_ids[]=115&per_page=100'));
 
@@ -376,7 +383,7 @@ class _StatsPageState extends State<StatsPage> {
                 children: [
                   Lottie.asset(
                     'assets/images/animations/ball.json',
-                    height: 200,
+                    height: 240,
                     fit: BoxFit.fill,
                   ),
                 ],
