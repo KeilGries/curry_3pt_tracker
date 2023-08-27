@@ -1,10 +1,10 @@
 import "package:assorted_layout_widgets/assorted_layout_widgets.dart";
 import "package:flutter/material.dart";
 
-class LongElevatedButtonRight extends StatelessWidget {
+class LongElevatedButtonRight extends StatefulWidget {
   final String label;
   final IconData icon;
-  final String? onTap;
+  final dynamic onTap;
   const LongElevatedButtonRight({
     super.key,
     required this.label,
@@ -13,19 +13,23 @@ class LongElevatedButtonRight extends StatelessWidget {
   });
 
   @override
+  State<LongElevatedButtonRight> createState() => _LongElevatedButtonRightState();
+}
+
+class _LongElevatedButtonRightState extends State<LongElevatedButtonRight> {
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton.icon(
         icon: Icon(
-          icon,
+          widget.icon,
           size: 28,
         ),
-        onPressed: () {
-          onTap;
-        },
+        onPressed: widget.onTap,
         label: Text(
-          label,
+          widget.label,
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,

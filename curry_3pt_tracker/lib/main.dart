@@ -11,6 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // initialRoute: '/',
+      // routes: {
+      //   '/':(context) => const Home(),
+      //   '/second':(context) => const StatsPage(),
+      // },
+      home: const Home(),
       title: 'Steph Curry 3pt Streak & Stats',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -20,7 +26,6 @@ class MyApp extends StatelessWidget {
             secondary: const Color.fromARGB(255, 29, 66, 138),
             primaryContainer: const Color.fromARGB(255, 204, 154, 0)),
       ),
-      home: const Home(),
     );
   }
 }

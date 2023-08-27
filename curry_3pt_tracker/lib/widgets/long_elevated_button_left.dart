@@ -1,16 +1,29 @@
 import "package:assorted_layout_widgets/assorted_layout_widgets.dart";
 import "package:flutter/material.dart";
 
-class LongElevatedButtonLeft extends StatelessWidget {
-  final String label;
+class LongElevatedButtonLeft extends StatefulWidget {
   final IconData icon;
-  final String? onTap;
   const LongElevatedButtonLeft({
     super.key,
-    required this.label,
     required this.icon,
-    this.onTap,
   });
+
+  @override
+  State<LongElevatedButtonLeft> createState() => _LongElevatedButtonLeftState();
+}
+
+class _LongElevatedButtonLeftState extends State<LongElevatedButtonLeft> {
+  String buttonText = 'Show Upcoming Game';
+  double fontSize = 18;
+  String indent = '         ';
+
+  void buttonClicked() {
+    setState(() {
+      buttonText =
+          'Warriors @ Timberwolves $indent 12/12/12 - 8:30PM (EST) - ESPN';
+      fontSize = 13;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +33,14 @@ class LongElevatedButtonLeft extends StatelessWidget {
         textDirection: TextDirection.rtl,
         child: ElevatedButton.icon(
           icon: Icon(
-            icon,
+            widget.icon,
             size: 28,
           ),
-          onPressed: () {
-            onTap;
-          },
+          onPressed: buttonClicked,
           label: Text(
-            label,
-            style: const TextStyle(
-              fontSize: 18,
+            buttonText,
+            style: TextStyle(
+              fontSize: fontSize,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
