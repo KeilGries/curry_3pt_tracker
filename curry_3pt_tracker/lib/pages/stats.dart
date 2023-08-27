@@ -12,12 +12,6 @@ import "package:http/http.dart" as http;
 import 'dart:async';
 import 'dart:convert';
 
-Widget _loadingContent = Lottie.asset(
-  'assets/images/animations/ball.json',
-  height: 200,
-  fit: BoxFit.fill,
-);
-
 Future<Stats> fetchStats() async {
   await Future.delayed(const Duration(milliseconds: 1225));
   final response = await http.get(Uri.parse(
