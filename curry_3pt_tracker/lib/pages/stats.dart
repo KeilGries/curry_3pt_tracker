@@ -256,7 +256,10 @@ class _StatsPageState extends State<StatsPage> {
                               children: [
                                 const Spacer(),
                                 IconButton(
-                                  icon: const Icon(Icons.arrow_back),
+                                  icon: const Icon(
+                                    Icons.arrow_back,
+                                    size: 36,
+                                  ),
                                   onPressed: () {
                                     Navigator.pushReplacement(
                                       context,
