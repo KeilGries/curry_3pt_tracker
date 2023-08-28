@@ -24,8 +24,8 @@ class StatCard extends StatelessWidget {
         elevation: 8,
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
-          side: BorderSide(
-            color: Theme.of(context).colorScheme.primary.withOpacity(.5),
+          side: const BorderSide(
+            color: Colors.white,
             width: 2,
           ),
           borderRadius: BorderRadius.circular(24),

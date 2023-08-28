@@ -1,7 +1,7 @@
 import "package:curry_3pt_tracker/global_variables.dart";
 import "package:curry_3pt_tracker/icon_files/app_icons.dart";
 import "package:curry_3pt_tracker/pages/home.dart";
-import "package:curry_3pt_tracker/widgets/large_stat_card.dart";
+import 'package:curry_3pt_tracker/widgets/stat_card.dart';
 import "package:curry_3pt_tracker/widgets/points_stat_card.dart";
 import "package:flutter/material.dart";
 import "package:flutter_animate/flutter_animate.dart";
@@ -13,7 +13,7 @@ import 'dart:async';
 import 'dart:convert';
 
 Future<Stats> fetchStats() async {
-  await Future.delayed(const Duration(milliseconds: 1225));
+  await Future.delayed(const Duration(milliseconds: 1000));
   final response = await http.get(Uri.parse(
       'https://balldontlie.io/api/v1/stats?seasons[]=2022&player_ids[]=115&per_page=100'));
 
@@ -164,190 +164,221 @@ class _StatsPageState extends State<StatsPage> {
                 child: SafeArea(
                   child: Animate(
                     effects: const [
-                      FadeEffect(duration: Duration(milliseconds: 700)),
+                      FadeEffect(duration: Duration(milliseconds: 500)),
                       // ScaleEffect(duration: Duration(milliseconds: 900)),
                     ],
-                    child: Column(
+                    child: Stack(
                       children: [
-                        const Spacer(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        Positioned(
+                          top: MediaQuery.of(context).size.width / 2.75,
+                          left: MediaQuery.of(context).size.width / 2.25,
+                          child: Image.asset(
+                            'assets/images/curry-text-logo.png',
+                            width: 300,
+                          ),
+                        )
+                            .animate()
+                            .fadeIn(delay: 10.seconds, duration: 1.5.seconds),
+                        Positioned(
+                          top: 145,
+                          left: 261,
+                          child: Image.asset(
+                            'assets/images/curry_shrug_4_thicker_2.png',
+                            width: 125,
+                          ),
+                        )
+                            .animate()
+                            .fadeOut(delay: 8.seconds, duration: 1.5.seconds),
+                        Column(
                           children: [
                             const Spacer(),
-                            Image.asset(
-                              teamLogos.$1,
-                              width: 120,
-                            ),
-                            Column(
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                const Row(
+                                const Spacer(),
+                                Image.asset(
+                                  teamLogos.$1,
+                                  width: 120,
+                                ),
+                                Column(
                                   children: [
-                                    Icon(
-                                      Icons.airplanemode_active,
-                                      size: 18,
-                                      color: Colors.black87,
+                                    const Row(
+                                      children: [
+                                        Icon(
+                                          Icons.airplanemode_active,
+                                          size: 18,
+                                          color: Colors.black87,
+                                        ),
+                                        SizedBox(
+                                          width: 60,
+                                        ),
+                                        Icon(
+                                          Icons.home,
+                                          size: 18,
+                                          color: Colors.black87,
+                                        ),
+                                      ],
                                     ),
-                                    SizedBox(
-                                      width: 60,
+                                    const SizedBox(height: 7),
+                                    Text(
+                                      '${stats.visitingScore.toString()} - ${stats.homeScore.toString()}',
+                                      style: const TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                    Icon(
-                                      Icons.home,
-                                      size: 18,
-                                      color: Colors.black87,
+                                    const SizedBox(height: 3),
+                                    Text(
+                                      formattedDate,
+                                      style: const TextStyle(
+                                        fontSize: 22,
+                                      ),
                                     ),
                                   ],
                                 ),
-                                const SizedBox(height: 7),
-                                Text(
-                                  '${stats.visitingScore.toString()} - ${stats.homeScore.toString()}',
-                                  style: const TextStyle(
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                Image.asset(
+                                  teamLogos.$2,
+                                  width: 120,
                                 ),
-                                const SizedBox(height: 3),
-                                Text(
-                                  formattedDate,
-                                  style: const TextStyle(
-                                    fontSize: 22,
-                                  ),
-                                ),
+                                const Spacer(),
                               ],
                             ),
-                            Image.asset(
-                              teamLogos.$2,
-                              width: 120,
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width - 150,
+                              child: Divider(
+                                color: Theme.of(context).colorScheme.secondary,
+                                thickness: 2.5,
+                              ),
                             ),
-                            const Spacer(),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            const Spacer(),
-                            IconButton(
-                              icon: const Icon(Icons.arrow_back),
-                              onPressed: () {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const Home(),
-                                  ),
-                                );
-                              },
-                            ),
-                            const Spacer(),
-                            Column(
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.max,
                               children: [
-                                PointsStatCard(
-                                  icon: AppIcons.pts,
+                                const Spacer(),
+                                IconButton(
+                                  icon: const Icon(Icons.arrow_back),
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const Home(),
+                                      ),
+                                    );
+                                  },
+                                ),
+                                const Spacer(),
+                                Column(
+                                  children: [
+                                    PointsStatCard(
+                                      icon: AppIcons.pts,
+                                      boxHeight: 4,
+                                      text1: 'PTS: ',
+                                      text2: stats.pts.toString(),
+                                      iconSize: 62,
+                                    ),
+                                  ],
+                                ),
+                                const Spacer(),
+                                const SizedBox(width: 48),
+                                const Spacer(),
+                              ],
+                            ),
+                            const Spacer(),
+                            Row(
+                              children: [
+                                StatCard(
+                                  icon: AppIcons.fg,
                                   boxHeight: 4,
-                                  text1: 'PTS: ',
-                                  text2: stats.pts.toString(),
-                                  iconSize: 62,
+                                  text1: 'FG: ',
+                                  text2:
+                                      '${stats.fgm.toString()}-${stats.fga.toString()}',
+                                  iconSize: 50,
+                                ),
+                                StatCard(
+                                  icon: AppIcons.fg3,
+                                  boxHeight: 6,
+                                  text1: '3PT: ',
+                                  text2:
+                                      '${stats.fg3m.toString()}-${stats.fg3a.toString()}',
+                                  iconSize: 48,
                                 ),
                               ],
                             ),
                             const Spacer(),
-                            const SizedBox(width: 48),
+                            Row(
+                              children: [
+                                StatCard(
+                                  icon: AppIcons.ft,
+                                  boxHeight: 4,
+                                  text1: 'FT: ',
+                                  text2:
+                                      '${stats.ftm.toString()}-${stats.fta.toString()}',
+                                  iconSize: 60,
+                                ),
+                                StatCard(
+                                  icon: AppIcons.rebb,
+                                  boxHeight: 4,
+                                  text1: 'REB: ',
+                                  text2: totalReb.toString(),
+                                  iconSize: 60,
+                                ),
+                              ],
+                            ),
+                            const Spacer(),
+                            Row(
+                              children: [
+                                StatCard(
+                                  icon: AppIcons.ast,
+                                  boxHeight: 4,
+                                  text1: 'AST: ',
+                                  text2: stats.ast.toString(),
+                                  iconSize: 45,
+                                ),
+                                StatCard(
+                                  icon: AppIcons.blk,
+                                  boxHeight: 4,
+                                  text1: 'BLK: ',
+                                  text2: stats.blk.toString(),
+                                  iconSize: 45,
+                                ),
+                                StatCard(
+                                  icon: AppIcons.stl,
+                                  boxHeight: 4,
+                                  text1: 'STL: ',
+                                  text2: stats.stl.toString(),
+                                  iconSize: 45,
+                                ),
+                              ],
+                            ),
+                            const Spacer(),
+                            Row(
+                              children: [
+                                StatCard(
+                                  icon: AppIcons.pf,
+                                  boxHeight: 4,
+                                  text1: 'PF: ',
+                                  text2: stats.pf.toString(),
+                                  iconSize: 45,
+                                ),
+                                StatCard(
+                                  icon: AppIcons.to,
+                                  boxHeight: 4,
+                                  text1: 'TO: ',
+                                  text2: stats.to.toString(),
+                                  iconSize: 45,
+                                ),
+                                StatCard(
+                                  icon: Icons.timer,
+                                  boxHeight: 4,
+                                  text1: 'MIN: ',
+                                  text2: stats.min.toString(),
+                                  iconSize: 45,
+                                ),
+                              ],
+                            ),
                             const Spacer(),
                           ],
                         ),
-                        const Spacer(),
-                        Row(
-                          children: [
-                            StatCard(
-                              icon: AppIcons.fg,
-                              boxHeight: 4,
-                              text1: 'FG: ',
-                              text2:
-                                  '${stats.fgm.toString()}-${stats.fga.toString()}',
-                              iconSize: 50,
-                            ),
-                            StatCard(
-                              icon: AppIcons.fg3,
-                              boxHeight: 6,
-                              text1: '3PT: ',
-                              text2:
-                                  '${stats.fg3m.toString()}-${stats.fg3a.toString()}',
-                              iconSize: 48,
-                            ),
-                          ],
-                        ),
-                        const Spacer(),
-                        Row(
-                          children: [
-                            StatCard(
-                              icon: AppIcons.ft,
-                              boxHeight: 4,
-                              text1: 'FT: ',
-                              text2:
-                                  '${stats.ftm.toString()}-${stats.fta.toString()}',
-                              iconSize: 60,
-                            ),
-                            StatCard(
-                              icon: AppIcons.rebb,
-                              boxHeight: 4,
-                              text1: 'REB: ',
-                              text2: totalReb.toString(),
-                              iconSize: 60,
-                            ),
-                          ],
-                        ),
-                        const Spacer(),
-                        Row(
-                          children: [
-                            StatCard(
-                              icon: AppIcons.ast,
-                              boxHeight: 4,
-                              text1: 'AST: ',
-                              text2: stats.ast.toString(),
-                              iconSize: 45,
-                            ),
-                            StatCard(
-                              icon: AppIcons.blk,
-                              boxHeight: 4,
-                              text1: 'BLK: ',
-                              text2: stats.blk.toString(),
-                              iconSize: 45,
-                            ),
-                            StatCard(
-                              icon: AppIcons.stl,
-                              boxHeight: 4,
-                              text1: 'STL: ',
-                              text2: stats.stl.toString(),
-                              iconSize: 45,
-                            ),
-                          ],
-                        ),
-                        const Spacer(),
-                        Row(
-                          children: [
-                            StatCard(
-                              icon: AppIcons.pf,
-                              boxHeight: 4,
-                              text1: 'PF: ',
-                              text2: stats.pf.toString(),
-                              iconSize: 45,
-                            ),
-                            StatCard(
-                              icon: AppIcons.to,
-                              boxHeight: 4,
-                              text1: 'TO: ',
-                              text2: stats.to.toString(),
-                              iconSize: 45,
-                            ),
-                            StatCard(
-                              icon: Icons.timer,
-                              boxHeight: 4,
-                              text1: 'MIN: ',
-                              text2: stats.min.toString(),
-                              iconSize: 45,
-                            ),
-                          ],
-                        ),
-                        const Spacer(),
                       ],
                     ),
                   ),
@@ -376,6 +407,7 @@ class _StatsPageState extends State<StatsPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Lottie.asset(
+                    frameRate: FrameRate(75),
                     'assets/images/animations/ball.json',
                     height: 240,
                     fit: BoxFit.fill,

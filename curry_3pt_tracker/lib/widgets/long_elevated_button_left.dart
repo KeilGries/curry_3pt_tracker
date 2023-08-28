@@ -1,4 +1,5 @@
 import "package:assorted_layout_widgets/assorted_layout_widgets.dart";
+import "package:curry_3pt_tracker/global_variables.dart";
 import "package:flutter/material.dart";
 
 class LongElevatedButtonLeft extends StatefulWidget {
@@ -18,9 +19,14 @@ class _LongElevatedButtonLeftState extends State<LongElevatedButtonLeft> {
   String indent = '         ';
 
   void buttonClicked() {
+    final date = fetchUpcomingGame()?.$1;
+    final matchup = fetchUpcomingGame()?.$2;
+    final time = fetchUpcomingGame()?.$3;
+    final channel = fetchUpcomingGame()?.$4;
+
     setState(() {
       buttonText =
-          'Warriors @ Timberwolves $indent 12/12/12 - 8:30PM (EST) - ESPN';
+          '$matchup                               $date - $time - $channel';
       fontSize = 13;
     });
   }

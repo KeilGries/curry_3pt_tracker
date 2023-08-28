@@ -1,9 +1,8 @@
 import "package:curry_3pt_tracker/pages/stats.dart";
 import "package:curry_3pt_tracker/widgets/info_slider.dart";
+import "package:curry_3pt_tracker/widgets/long_elevated_button_left.dart";
 import "package:curry_3pt_tracker/widgets/long_elevated_button_right.dart";
 import "package:flutter/material.dart";
-
-import '../widgets/long_elevated_button_left.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});

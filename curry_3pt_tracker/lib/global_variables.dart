@@ -1,3 +1,6 @@
+import "package:curry_3pt_tracker/gsw_schedule_23_24.dart";
+import "package:intl/intl.dart";
+
 // DATA FOR HOMEPAGE INFO SLIDER
 final cardDataList = [
   {
@@ -11,7 +14,6 @@ final cardDataList = [
     'date': '12/2/18—6/11/22',
   },
 ];
-
 
 // VARIABLES FOR ALL TEAM LOGO PATHS
 const String atl =
@@ -104,10 +106,9 @@ const String uta =
 const String was =
     'assets/images/nba_assets/Teams/eastern_conference/washington-wizards-logo.png';
 
-const String notFound = 
-    'assets/images/nba_assets/misc/unknown_team.png';
+const String notFound = 'assets/images/nba_assets/misc/unknown_team.png';
 
-// CONVERT VISITNG AND HOME 'TEAMID' INTO LOGO ASSET PATHS FROM RESPONSE 
+// CONVERT VISITNG AND HOME 'TEAMID' INTO LOGO ASSET PATHS FROM RESPONSE
 (String, String) parseTeams(int visitingID, int homeID) {
   String visitingLogo = '';
   String homeLogo = '';
@@ -194,16 +195,16 @@ const String notFound =
       visitingLogo = sas;
       break;
     case 28:
-    visitingLogo = tor;
+      visitingLogo = tor;
       break;
     case 29:
-    visitingLogo = uta;
+      visitingLogo = uta;
       break;
     case 30:
-    visitingLogo = was;
+      visitingLogo = was;
       break;
     default:
-    visitingLogo = notFound;
+      visitingLogo = notFound;
   }
   switch (homeID) {
     case 14:
@@ -212,3 +213,22 @@ const String notFound =
   }
   return (visitingLogo, homeLogo);
 }
+
+// RETRIEVE CURRENT DATE AND CHECK SCHEDULE FOR NEXT GAME THAT HAS NO PASSED
+(String, String, String, String)? fetchUpcomingGame() {
+  final now = DateTime.now();
+  for (int i = 0; i < schedule.length; i++) {
+    var rawDate = schedule[i]['date'] ?? '6/6/6';
+    var parsedDate = DateFormat('MM/dd/yy').parse(rawDate);
+    final bool isUpcoming = parsedDate.isAfter(now);
+    if (isUpcoming == true) {
+      final String date = schedule[i]['date'].toString();
+      final String matchup = schedule[i]['matchup'].toString();
+      final String time = schedule[i]['time'].toString();
+      final String channel = schedule[i]['channel'].toString();
+      return (date, matchup, time, channel);
+    }
+  }
+  return null;
+}
+
