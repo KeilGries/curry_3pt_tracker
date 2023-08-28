@@ -29,14 +29,14 @@ class Home extends StatelessWidget {
                 const InfoSlider(),
                 const Spacer(),
                 const Padding(
-                  padding: EdgeInsets.only(right: 90.0),
+                  padding: EdgeInsets.only(right: 105.0),
                   child: LongElevatedButtonLeft(
                     icon: Icons.sports_basketball,
                   ),
                 ),
                 const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(left: 90.0),
+                  padding: const EdgeInsets.only(left: 105.0),
                   child: LongElevatedButtonRight(
                     onTap: () {
                       Navigator.pushReplacement(
