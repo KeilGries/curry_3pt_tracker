@@ -11,6 +11,8 @@ class StreakInfo extends StatelessWidget {
     required this.date,
   });
 
+  // DATA FOR HOMEPAGE INFO SLIDER
+
   @override
   Widget build(BuildContext context) {
     return Padding(

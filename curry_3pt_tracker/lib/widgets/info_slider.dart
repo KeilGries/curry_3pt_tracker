@@ -1,10 +1,12 @@
 import "package:carousel_slider/carousel_slider.dart";
-import "package:curry_3pt_tracker/global_variables.dart";
 import "package:curry_3pt_tracker/widgets/streak_info.dart";
 import "package:flutter/material.dart";
 
 class InfoSlider extends StatelessWidget {
-  const InfoSlider({super.key});
+  final List cardDataList;
+  const InfoSlider({
+    super.key,
+    required this.cardDataList});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,6 @@ class InfoSlider extends StatelessWidget {
         autoPlayInterval: const Duration(seconds: 10),
         autoPlayAnimationDuration: const Duration(milliseconds: 800),
         autoPlayCurve: Curves.fastOutSlowIn,
-
       ),
       items: [0, 1].map((i) {
         return Builder(

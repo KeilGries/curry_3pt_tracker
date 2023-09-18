@@ -1,19 +1,6 @@
 import "package:curry_3pt_tracker/gsw_schedule_23_24.dart";
+import "package:flutter/widgets.dart";
 import "package:intl/intl.dart";
-
-// DATA FOR HOMEPAGE INFO SLIDER
-final cardDataList = [
-  {
-    'statQ': 'How many games in a row has Steph Curry hit a 3pt shot?',
-    'answer': 'Current Streak: 70',
-    'date': 'Began 6/17/22',
-  },
-  {
-    'statQ': 'What is Curry\'s record for games in a row with a made 3pt shot?',
-    'answer': 'Longest Streak: 233',
-    'date': '12/2/18—6/11/22',
-  },
-];
 
 // VARIABLES FOR ALL TEAM LOGO PATHS
 const String atl =
@@ -232,3 +219,14 @@ const String notFound = 'assets/images/nba_assets/misc/unknown_team.png';
   return null;
 }
 
+// CHECK IF A GAME WAS PLAYED AND IF A 3PT SHOT WAS HIT.
+// IF SO, STREAK + 1. IF NOT, STREAK = 0
+
+checkStreak(int? streakFG3M, int? gamesPlayed) {
+  debugPrint('Checking streak...');
+  int currentStreak = 70;
+  // if (streakFG3M! >= 1) {
+  //   currentStreak = 70 + gamesPlayed!;    
+  // }
+  return currentStreak;
+}

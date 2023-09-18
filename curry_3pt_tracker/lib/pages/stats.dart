@@ -114,8 +114,10 @@ class Stats {
 }
 
 class StatsPage extends StatefulWidget {
+  // final Stats stats;
   const StatsPage({
     super.key,
+    // required this.stats,
   });
 
   @override
@@ -148,6 +150,29 @@ class _StatsPageState extends State<StatsPage> {
 
           final teamLogos = parseTeams(stats.visitingID, stats.homeID);
 
+          final statsAnim = Positioned(
+            top: 145,
+            left: 261,
+            child: Image.asset(
+              'assets/images/curry_shrug_4_thicker_2.png',
+              width: 125,
+            ),
+          ).animate().fadeOut(delay: 10.seconds, duration: 1.5.seconds);
+          // .then()
+          // .fadeIn(delay: 10.seconds, duration: 1.5.seconds);
+          // .fadeIn(delay: 8.seconds, duration: 1.5.seconds);
+
+          final statsAnim2 = Positioned(
+            top: MediaQuery.of(context).size.width / 2.75,
+            left: MediaQuery.of(context).size.width / 2.25,
+            child: Image.asset(
+              'assets/images/curry-text-logo.png',
+              width: 300,
+            ),
+          ).animate().fadeIn(delay: 12.seconds, duration: 1.5.seconds);
+
+          // .fadeIn(delay: 10.seconds, duration: 1.5.seconds);
+
           return Scaffold(
             body: Center(
               child: Container(
@@ -169,26 +194,8 @@ class _StatsPageState extends State<StatsPage> {
                     ],
                     child: Stack(
                       children: [
-                        Positioned(
-                          top: MediaQuery.of(context).size.width / 2.75,
-                          left: MediaQuery.of(context).size.width / 2.25,
-                          child: Image.asset(
-                            'assets/images/curry-text-logo.png',
-                            width: 300,
-                          ),
-                        )
-                            .animate()
-                            .fadeIn(delay: 10.seconds, duration: 1.5.seconds),
-                        Positioned(
-                          top: 145,
-                          left: 261,
-                          child: Image.asset(
-                            'assets/images/curry_shrug_4_thicker_2.png',
-                            width: 125,
-                          ),
-                        )
-                            .animate()
-                            .fadeOut(delay: 8.seconds, duration: 1.5.seconds),
+                        statsAnim,
+                        statsAnim2,
                         Column(
                           children: [
                             const Spacer(),
