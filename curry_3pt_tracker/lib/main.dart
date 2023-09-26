@@ -1,8 +1,21 @@
+import "package:curry_3pt_tracker/classes/api_service.dart";
+import "package:curry_3pt_tracker/classes/stats.dart";
 import 'package:curry_3pt_tracker/pages/home.dart';
-import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+final apiProvider = Provider<APIService>(
+  (ref) => APIService(),
+);
+
+final statsDataProvider = FutureProvider<Stats>(
+  (ref) {
+    return ref.read(apiProvider).fetchStats();
+  },
+);
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

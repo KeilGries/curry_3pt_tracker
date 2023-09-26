@@ -42,7 +42,7 @@ dependencies:
   flutter_animate: 
   intl: ^0.18.1
   html: ^0.15.4
-  chaleno: ^0.0.6
+  flutter_riverpod: ^2.4.0
 
 dev_dependencies:
   flutter_test:
